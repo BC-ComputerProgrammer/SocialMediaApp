@@ -61,21 +61,6 @@ public class SignUpPage implements Handler {
         // // Add HTML for the page content
         html = html + """
         <body>
-<<<<<<< Updated upstream
-            <div class = "container" id = "container">
-                <form method = 'POST'>
-                    <label for = "Instrcution">Sign up to see photos and videos from your friends.</label><br><br>
-                    <input type = "text" name = "textUsername" placeholder = "Username"><br><br>
-                    <input type = "text" name = "textEmail" placeholder = "Email"><br><br>
-                    <input type = "text" name = "textPoneNumber" placeholder = "PoneNumber"><br><br>
-                    <input type = "text" name = "textFullName" placeholder = "Full Name"><br><br>
-                    <input type = "text" name = "textPassword" placeholder = "New password"><br><br>
-                    <input type = "text" name = "textCPassword" placeholder = "Confirm your password"><br><br>
-                    <p>People who use our service may have uploaded your contact information to Instagram.</p>
-                    <p>By signing up, you agree to our Terms, Privacy Policy and Cookies Policy.</p><br>
-                    <button class = "btn">Sign Up</button>
-                </form>
-=======
             <div class = "main-content">
                 <div class = "signup-box">
                     <form method="post" action="/SignUpPage.html">
@@ -98,7 +83,6 @@ public class SignUpPage implements Handler {
                         <p>Have an account? <a href = "#">Log in</a></p>
                     </div>
                 </div>
->>>>>>> Stashed changes
             </div>
         </body>
             """;
