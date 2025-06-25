@@ -1,5 +1,8 @@
 package app;
 
+import java.sql.SQLException;
+
+import app.dao.UserDaoImpl;
 import io.javalin.Javalin;
 import io.javalin.core.util.RouteOverviewPlugin;
 
@@ -21,6 +24,12 @@ public class App {
 
     public static void main(String[] args) {
         // Create our HTTP server and listen in port 7000
+        UserDaoImpl userDao = new UserDaoImpl();
+        try {
+            userDao.setup();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         Javalin app = Javalin.create(config -> {
             config.registerPlugin(new RouteOverviewPlugin("/help/routes"));
             
