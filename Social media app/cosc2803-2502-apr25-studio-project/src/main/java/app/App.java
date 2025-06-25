@@ -40,7 +40,7 @@ public class App {
     public static void configureRoutes(Javalin app) {
         // All webpages are listed here as GET pages
         app.get(PageIndex.URL, new PageIndex());
-        app.get(PageMission.URL, new PageMission());
+        app.get(SignUpPage.URL, new SignUpPage());
         app.get(PageEquip.URL, new PageEquip());
         app.get(PageST2A.URL, new PageST2A());
         // app.get(PageST2B.URL, new PageST2B());
@@ -51,7 +51,7 @@ public class App {
 
         // Add / uncomment POST commands for any pages that need web form POSTS
         // app.post(PageIndex.URL, new PageIndex());
-        // app.post(PageMission.URL, new PageMission());
+        app.post(SignUpPage.URL, new SignUpPage());
         app.post(PageEquip.URL, new PageEquip());
         // app.post(PageST2A.URL, new PageST2A());
         // app.post(PageST2B.URL, new PageST2B());
