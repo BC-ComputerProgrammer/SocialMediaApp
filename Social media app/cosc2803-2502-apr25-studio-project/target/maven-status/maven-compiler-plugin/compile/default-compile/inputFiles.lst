@@ -1,14 +1,14 @@
-/Users/June_1/github-classroom/rmit-computing-technologies/cosc2803-2502-m2-4-startercode-team_215_cosc2803_apr25/cosc2803-2502-apr25-studio-project/cosc2803-2502-apr25-studio-project/src/main/java/app/StationLocation.java
-/Users/June_1/github-classroom/rmit-computing-technologies/cosc2803-2502-m2-4-startercode-team_215_cosc2803_apr25/cosc2803-2502-apr25-studio-project/cosc2803-2502-apr25-studio-project/src/main/java/app/LGA.java
-/Users/June_1/github-classroom/rmit-computing-technologies/cosc2803-2502-m2-4-startercode-team_215_cosc2803_apr25/cosc2803-2502-apr25-studio-project/cosc2803-2502-apr25-studio-project/src/main/java/app/PageST2A.java
-/Users/June_1/github-classroom/rmit-computing-technologies/cosc2803-2502-m2-4-startercode-team_215_cosc2803_apr25/cosc2803-2502-apr25-studio-project/cosc2803-2502-apr25-studio-project/src/main/java/app/App.java
-/Users/June_1/github-classroom/rmit-computing-technologies/cosc2803-2502-m2-4-startercode-team_215_cosc2803_apr25/cosc2803-2502-apr25-studio-project/cosc2803-2502-apr25-studio-project/src/main/java/app/PageST3B.java
-/Users/June_1/github-classroom/rmit-computing-technologies/cosc2803-2502-m2-4-startercode-team_215_cosc2803_apr25/cosc2803-2502-apr25-studio-project/cosc2803-2502-apr25-studio-project/src/main/java/app/PageMission.java
-/Users/June_1/github-classroom/rmit-computing-technologies/cosc2803-2502-m2-4-startercode-team_215_cosc2803_apr25/cosc2803-2502-apr25-studio-project/cosc2803-2502-apr25-studio-project/src/main/java/app/PageST2B.java
-/Users/June_1/github-classroom/rmit-computing-technologies/cosc2803-2502-m2-4-startercode-team_215_cosc2803_apr25/cosc2803-2502-apr25-studio-project/cosc2803-2502-apr25-studio-project/src/main/java/app/PageIndex.java
-/Users/June_1/github-classroom/rmit-computing-technologies/cosc2803-2502-m2-4-startercode-team_215_cosc2803_apr25/cosc2803-2502-apr25-studio-project/cosc2803-2502-apr25-studio-project/src/main/java/app/PageST3C.java
-/Users/June_1/github-classroom/rmit-computing-technologies/cosc2803-2502-m2-4-startercode-team_215_cosc2803_apr25/cosc2803-2502-apr25-studio-project/cosc2803-2502-apr25-studio-project/src/main/java/app/JDBCConnection.java
-/Users/June_1/github-classroom/rmit-computing-technologies/cosc2803-2502-m2-4-startercode-team_215_cosc2803_apr25/cosc2803-2502-apr25-studio-project/cosc2803-2502-apr25-studio-project/src/main/java/app/FLAG.java
-/Users/June_1/github-classroom/rmit-computing-technologies/cosc2803-2502-m2-4-startercode-team_215_cosc2803_apr25/cosc2803-2502-apr25-studio-project/cosc2803-2502-apr25-studio-project/src/main/java/app/PageST2C.java
-/Users/June_1/github-classroom/rmit-computing-technologies/cosc2803-2502-m2-4-startercode-team_215_cosc2803_apr25/cosc2803-2502-apr25-studio-project/cosc2803-2502-apr25-studio-project/src/main/java/app/PageST3A.java
-/Users/June_1/github-classroom/rmit-computing-technologies/cosc2803-2502-m2-4-startercode-team_215_cosc2803_apr25/cosc2803-2502-apr25-studio-project/cosc2803-2502-apr25-studio-project/src/main/java/app/PageEquip.java
+/home/brad/PS2/SocialMediaApp/Social media app/cosc2803-2502-apr25-studio-project/src/main/java/app/PageST2C.java
+/home/brad/PS2/SocialMediaApp/Social media app/cosc2803-2502-apr25-studio-project/src/main/java/app/PageST3A.java
+/home/brad/PS2/SocialMediaApp/Social media app/cosc2803-2502-apr25-studio-project/src/main/java/app/PageEquip.java
+/home/brad/PS2/SocialMediaApp/Social media app/cosc2803-2502-apr25-studio-project/src/main/java/app/PageST2A.java
+/home/brad/PS2/SocialMediaApp/Social media app/cosc2803-2502-apr25-studio-project/src/main/java/app/FLAG.java
+/home/brad/PS2/SocialMediaApp/Social media app/cosc2803-2502-apr25-studio-project/src/main/java/app/JDBCConnection.java
+/home/brad/PS2/SocialMediaApp/Social media app/cosc2803-2502-apr25-studio-project/src/main/java/app/PageST3B.java
+/home/brad/PS2/SocialMediaApp/Social media app/cosc2803-2502-apr25-studio-project/src/main/java/app/LGA.java
+/home/brad/PS2/SocialMediaApp/Social media app/cosc2803-2502-apr25-studio-project/src/main/java/app/PageMission.java
+/home/brad/PS2/SocialMediaApp/Social media app/cosc2803-2502-apr25-studio-project/src/main/java/app/PageST2B.java
+/home/brad/PS2/SocialMediaApp/Social media app/cosc2803-2502-apr25-studio-project/src/main/java/app/PageIndex.java
+/home/brad/PS2/SocialMediaApp/Social media app/cosc2803-2502-apr25-studio-project/src/main/java/app/StationLocation.java
+/home/brad/PS2/SocialMediaApp/Social media app/cosc2803-2502-apr25-studio-project/src/main/java/app/App.java
+/home/brad/PS2/SocialMediaApp/Social media app/cosc2803-2502-apr25-studio-project/src/main/java/app/PageST3C.java

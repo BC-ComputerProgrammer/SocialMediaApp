@@ -21,6 +21,7 @@ public class App {
 
     public static void main(String[] args) {
         // Create our HTTP server and listen in port 7000
+        
         Javalin app = Javalin.create(config -> {
             config.registerPlugin(new RouteOverviewPlugin("/help/routes"));
             
