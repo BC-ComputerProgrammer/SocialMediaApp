@@ -1,0 +1,40 @@
+.container{
+    background-color: whitesmoke;
+    border-radius: 10px;
+    border-color: 2px solid black;
+    position: relative;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+    padding: 20px;
+    margin: 20px;
+}
+
+.btn{
+    background-color: rgb(143, 138, 242);
+    color: aliceblue;
+    padding: 10px, 20px;
+    font-size: medium;
+    border-radius: 6px;
+    cursor: pointer;
+    max-width: 90px;
+}
+
+.btn:hover{
+    background-color: rgb(93, 93, 235);
+}
+
+.body{
+    background-color: blanchedalmond;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    height: auto;
+    margin: auto;
+}
+
+.input[type = "text"]{
+    text-indent: 10px;
+    width: 200px
+}
