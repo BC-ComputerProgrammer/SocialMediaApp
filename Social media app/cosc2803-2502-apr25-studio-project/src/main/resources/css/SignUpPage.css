@@ -1,40 +1,87 @@
-.container{
-    background-color: whitesmoke;
-    border-radius: 10px;
-    border-color: 2px solid black;
-    position: relative;
-    width: 768px;
-    max-width: 100%;
-    min-height: 480px;
-    padding: 20px;
-    margin: 20px;
-}
-
-.btn{
-    background-color: rgb(143, 138, 242);
-    color: aliceblue;
-    padding: 10px, 20px;
-    font-size: medium;
-    border-radius: 6px;
-    cursor: pointer;
-    max-width: 90px;
-}
-
-.btn:hover{
-    background-color: rgb(93, 93, 235);
-}
-
-.body{
-    background-color: blanchedalmond;
+.main-content{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: sans-serif;
-    height: auto;
-    margin: auto;
+    margin-top: 20px;
 }
 
-.input[type = "text"]{
-    text-indent: 10px;
-    width: 200px
+.signup-box {
+    background-color: #121212;
+    padding: 40px;
+    width: 350px;
+    border: 1px solid #333;
+    text-align: center;
+    border-radius: 10px;
 }
+
+.signup-box p {
+    font-size: 14px;
+    color: #ccc;
+    margin: 10px 0;
+}
+
+.terms {
+    font-size: 11px;
+    color: #aaa;
+    margin: 15px 0;
+}
+  
+
+.signup-btn {
+    width: 100%;
+    background-color: #0095f6;
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.signup-btn:hover{
+    background-color: rgb(93, 93, 235);
+}
+  
+.login-link {
+    margin-top: 20px;
+    font-size: 14px;
+}
+  
+.login-link a {
+    color: #0095f6;
+    text-decoration: none;
+}
+
+/*
+body {
+    background-color: #000;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+}
+*/
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #222;
+    color: #fff;
+}
+
+form input::placeholder {
+    color: #aaa;
+}
+
+.logo-icon {
+    width: 90px;
+    height: 90px;
+    margin-right: 8px;
+}
+  

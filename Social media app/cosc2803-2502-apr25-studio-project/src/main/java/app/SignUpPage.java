@@ -32,7 +32,7 @@ public class SignUpPage implements Handler {
         String html = "<html>";
 
         // // Add some Head information
-        html = html + "<head>" + "<title>Sign Up</title>";
+        html = html + "<head>" + "<meta charset=\"UTF-8\">";
 
         // // Add some CSS (external file)
         html = html + "<link rel='stylesheet' type='text/css' href='common.css' />";
@@ -58,21 +58,10 @@ public class SignUpPage implements Handler {
             </div>
         """;
 
-        // // Add header content block
-        html = html + """
-            <div>
-                <h1>Sign Up</h1>
-            </div>
-        """;
-
-        
-
-        // // Add Div for page Content
-        // html = html + "<div class='content'>";
-
         // // Add HTML for the page content
         html = html + """
         <body>
+<<<<<<< Updated upstream
             <div class = "container" id = "container">
                 <form method = 'POST'>
                     <label for = "Instrcution">Sign up to see photos and videos from your friends.</label><br><br>
@@ -86,12 +75,36 @@ public class SignUpPage implements Handler {
                     <p>By signing up, you agree to our Terms, Privacy Policy and Cookies Policy.</p><br>
                     <button class = "btn">Sign Up</button>
                 </form>
+=======
+            <div class = "main-content">
+                <div class = "signup-box">
+                    <form method="post" action="/SignUpPage.html">
+                        <img src = "cat.png" alt = "person" class = "logo-icon" />
+                        <p>Sign up to see photos and videos from your friends.</p><br>
+                        <input type = "text" name = "textUsername" placeholder = "Username" required><br>
+                        <input type = "text" name = "textEmail" placeholder = "Email" required><br>
+                        <input type = "text" name = "textPhoneNumber" placeholder = "Phone Number" required><br>
+                        <input type = "text" name = "textFullName" placeholder = "Full Name" required><br>
+                        <input type = "text" name = "textPassword" placeholder = "New Password" required><br>
+                        <input type = "text" name = "textCPassword" placeholder = "Confirm Password" required><br>
+                        <p class = "terms">
+                            People who use our service may have uploaded your contact information to Instagram.<br>
+                            By signing up, you agree to our Terms, Privacy Policy and Cookies Policy.
+                        </p>
+                        <button type = "submit" class = "signup-btn">Sign Up</button>
+                    </form>
+
+                    <div class = "login-link">
+                        <p>Have an account? <a href = "#">Log in</a></p>
+                    </div>
+                </div>
+>>>>>>> Stashed changes
             </div>
         </body>
             """;
 
         
-      
+        html = html + "</html>";
 
         // // DO NOT MODIFY THIS
         // // Makes Javalin render the webpage
