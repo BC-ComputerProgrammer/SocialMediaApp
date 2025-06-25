@@ -20,6 +20,14 @@ public class SignUpPage implements Handler {
     @Override
     @SuppressWarnings("empty-statement")
     public void handle(Context context) throws Exception {
+
+        String username = context.formParam("textUsername");
+        String email = context.formParam("textEmail");
+        String phoneNumber = context.formParam("textPoneNumber");
+        String fullname = context.formParam("textFullName");
+        String password = context.formParam("textPassword");
+
+        
         // // Create a simple HTML webpage in a String
         String html = "<html>";
 
@@ -66,12 +74,14 @@ public class SignUpPage implements Handler {
         html = html + """
         <body>
             <div class = "container" id = "container">
-                <form method = 'get'>
+                <form method = 'POST'>
                     <label for = "Instrcution">Sign up to see photos and videos from your friends.</label><br><br>
-                    <input type = "text" name = "MobileNumberOrEmail" placeholder = "Mobile Number or Email"><br><br>
-                    <input type = "text" name = "password" placeholder = "password"><br><br>
-                    <input type = "text" name = "FullName" placeholder = "Full Name"><br><br>
-                    <input type = "text" name = "Username" placeholder = "Username"><br><br>
+                    <input type = "text" name = "textUsername" placeholder = "Username"><br><br>
+                    <input type = "text" name = "textEmail" placeholder = "Email"><br><br>
+                    <input type = "text" name = "textPoneNumber" placeholder = "PoneNumber"><br><br>
+                    <input type = "text" name = "textFullName" placeholder = "Full Name"><br><br>
+                    <input type = "text" name = "textPassword" placeholder = "New password"><br><br>
+                    <input type = "text" name = "textCPassword" placeholder = "Confirm your password"><br><br>
                     <p>People who use our service may have uploaded your contact information to Instagram.</p>
                     <p>By signing up, you agree to our Terms, Privacy Policy and Cookies Policy.</p><br>
                     <button class = "btn">Sign Up</button>
