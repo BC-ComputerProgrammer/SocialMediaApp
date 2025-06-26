@@ -17,7 +17,7 @@
 
 .login-box p {
     font-size: 14px;
-    color: #ccc;
+    color: rgb(254, 251, 251);
     margin: 10px 0;
 }
 
@@ -61,16 +61,21 @@ form input {
     border: 1px solid #555;
     border-radius: 5px;
     background-color: #f8f7f7;
-    color: #fff;
+    color: black;
 }
 
 form input::placeholder {
-    color: #111111;
+    color: grey;
 }
 
 .logo-icon {
     width: 90px;
     height: 90px;
     margin-right: 8px;
+}
+
+.error-message {
+    color: red !important;
+    text-align: center;
 }
   

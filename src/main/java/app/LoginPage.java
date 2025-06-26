@@ -1,5 +1,8 @@
 package app;
 
+import java.sql.SQLException;
+
+import app.dao.UserDaoImpl;
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
 
@@ -15,10 +18,33 @@ import io.javalin.http.Handler;
 public class LoginPage implements Handler {
 
     // URL of this page relative to http://localhost:7001/
-    public static final String URL = "/LoginPage.html";
+    public static final String URL = "/login";
 
     @Override
     public void handle(Context context) throws Exception {
+        
+        String username = context.formParam("textUsername");
+        String password = context.formParam("textPassword");
+        String errorMsg = ""; 
+
+        if (username != null && password != null){
+            
+            UserDaoImpl userdao = new UserDaoImpl();
+            try {
+                boolean isMatch = userdao.checkPassword(username, password);
+
+                if(isMatch){
+                    context.redirect(Profile.URL);
+                }else{
+                    errorMsg = "<p class = 'error-message'>Invalid username or password!</p>";
+                }
+            }catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+        
+        
+
         // // Create a simple HTML webpage in a String
         String html = "<html>";
 
@@ -34,14 +60,9 @@ public class LoginPage implements Handler {
         html = html + """
             <div class='topnav'>
                 <a href='/'>Homepage</a>
-                <a href='mission.html'>Our Mission</a>
-		        <a href="equipment.html">Climate Equipment</a>
-                <a href='page2A.html'>Sub Task 2.A</a>
-                <a href='page2B.html'>Sub Task 2.B</a>
-                <a href='page2C.html'>Sub Task 2.C</a>
-                <a href='page3A.html'>Sub Task 3.A</a>
-                <a href='page3B.html'>Sub Task 3.B</a>
-                <a href='page3C.html'>Sub Task 3.C</a>
+		        <a href='Sign Up.html'>Sign Up</a>
+                <a href="login">Log In</a>
+                <a href='Profile.html'>Profile</a>
             </div>
         """;
 
@@ -50,7 +71,7 @@ public class LoginPage implements Handler {
         <body>
             <div class = "main-content">
                 <div class = "login-box">
-                    <form method="post" action="/LoginInPage.html">
+                    <form method="post" action="/login">
                         <img src = "cat.png" alt = "icon" class = "logo-icon" /><br><br>
                         <input type = "text" name = "textUsername" placeholder = "Username" required><br>
                         <input type = "text" name = "textPassword" placeholder = "Password" required><br>
@@ -59,9 +80,12 @@ public class LoginPage implements Handler {
                         </p>
                         <button type = "submit" class = "login-btn">Login In</button>
                     </form>
-
+        """;                            
+                            
+        html += errorMsg; 
+        html += """
                     <div class = "login-link">
-                        <p>Don't have an account?<a href = "SignUpPage.URL">Sign up</a></p>
+                        <p>Don't have an account?<a href = "SignUpPage.URL">  Sign up</a></p>
                     </div>
                 </div>
             </div>

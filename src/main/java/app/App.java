@@ -52,7 +52,7 @@ public class App {
         app.get(PageIndex.URL, new PageIndex());
         app.get(SignUpPage.URL, new SignUpPage());
         app.get(LoginPage.URL, new LoginPage());
-        app.get(PageST2A.URL, new PageST2A());
+        app.get(Profile.URL, new Profile());
         // app.get(PageST2B.URL, new PageST2B());
         // app.get(PageST2C.URL, new PageST2C());
         // app.get(PageST3A.URL, new PageST3A());
@@ -63,7 +63,7 @@ public class App {
         // app.post(PageIndex.URL, new PageIndex());
         app.post(SignUpPage.URL, new SignUpPage());
         app.post(LoginPage.URL, new LoginPage());
-        // app.post(PageST2A.URL, new PageST2A());
+        app.post(Profile.URL, new Profile());
         // app.post(PageST2B.URL, new PageST2B());
         // app.post(PageST3A.URL, new PageST3A());
         // app.post(PageST3B.URL, new PageST3B());
