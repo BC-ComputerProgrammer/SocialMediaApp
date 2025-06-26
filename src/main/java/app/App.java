@@ -1,5 +1,8 @@
 package app;
 
+import java.sql.SQLException;
+
+import app.dao.UserDaoImpl;
 import io.javalin.Javalin;
 import io.javalin.core.util.RouteOverviewPlugin;
 
@@ -20,6 +23,14 @@ public class App {
     public static final String      IMAGES_DIR      = "images/";
 
     public static void main(String[] args) {
+        try {
+            System.out.println("Done");
+            UserDaoImpl userDao = new UserDaoImpl();
+            userDao.setup();
+        } catch (SQLException e) {
+            System.err.println("Error setting up");
+        }
+        
         // Create our HTTP server and listen in port 7000
         Javalin app = Javalin.create(config -> {
             config.registerPlugin(new RouteOverviewPlugin("/help/routes"));
@@ -39,7 +50,7 @@ public class App {
     public static void configureRoutes(Javalin app) {
         // All webpages are listed here as GET pages
         app.get(PageIndex.URL, new PageIndex());
-        app.get(PageMission.URL, new PageMission());
+        //app.get(PageMission.URL, new PageMission());
         app.get(PageEquip.URL, new PageEquip());
         app.get(PageST2A.URL, new PageST2A());
         // app.get(PageST2B.URL, new PageST2B());
