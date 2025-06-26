@@ -51,7 +51,7 @@ public class App {
         // All webpages are listed here as GET pages
         app.get(PageIndex.URL, new PageIndex());
         app.get(SignUpPage.URL, new SignUpPage());
-        app.get(PageEquip.URL, new PageEquip());
+        app.get(LoginPage.URL, new LoginPage());
         app.get(PageST2A.URL, new PageST2A());
         // app.get(PageST2B.URL, new PageST2B());
         // app.get(PageST2C.URL, new PageST2C());
@@ -62,7 +62,7 @@ public class App {
         // Add / uncomment POST commands for any pages that need web form POSTS
         // app.post(PageIndex.URL, new PageIndex());
         app.post(SignUpPage.URL, new SignUpPage());
-        app.post(PageEquip.URL, new PageEquip());
+        app.post(LoginPage.URL, new LoginPage());
         // app.post(PageST2A.URL, new PageST2A());
         // app.post(PageST2B.URL, new PageST2B());
         // app.post(PageST3A.URL, new PageST3A());

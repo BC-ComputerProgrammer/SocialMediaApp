@@ -40,7 +40,7 @@ public class PageIndex implements Handler {
              <div class='topnav'>
                 <a href='/'>Homepage</a>
                 <a href='SignUpPage.html'>Sign Up</a>
-		        <a href="equipment.html">Climate Equipment</a>
+		        <a href="LoginPage.html">Log In</a>
                 <a href='page2A.html'>Sub Task 2.A</a>
                 <a href='page2B.html'>Sub Task 2.B</a>
                 <a href='page2C.html'>Sub Task 2.C</a>
