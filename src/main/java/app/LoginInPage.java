@@ -12,10 +12,10 @@ import io.javalin.http.Handler;
  * @author Timothy Wiley, 2023. email: timothy.wiley@rmit.edu.au
  * @author Santha Sumanasekara, 2021. email: santha.sumanasekara@rmit.edu.au
  */
-public class PageEquip implements Handler {
+public class LoginInPage implements Handler {
 
     // URL of this page relative to http://localhost:7001/
-    public static final String URL = "/equipment.html";
+    public static final String URL = "/LoginInPage.html";
 
     @Override
     public void handle(Context context) throws Exception {
