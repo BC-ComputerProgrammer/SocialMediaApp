@@ -36,7 +36,7 @@ public class UserDaoImpl implements UserDao {
     public User createUser(String username, String password, String phoneNum, String email, String name) throws SQLException {
         if(userExists(username)) {
             throw new SQLException("Username already exists, Please try again");
-        }
+        } 
         
         String sql = "INSERT INTO " + TABLE_NAME + " (username, password, phoneNum, email, name) VALUES (?,?,?,?,?)";
 
