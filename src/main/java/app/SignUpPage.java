@@ -20,13 +20,13 @@ public class SignUpPage implements Handler {
     @Override
     @SuppressWarnings("empty-statement")
     public void handle(Context context) throws Exception {
-
         String username = context.formParam("textUsername");
         String email = context.formParam("textEmail");
         String phoneNumber = context.formParam("textPoneNumber");
         String fullname = context.formParam("textFullName");
         String password = context.formParam("textPassword");
-
+        
+        
         
         // // Create a simple HTML webpage in a String
         String html = "<html>";
