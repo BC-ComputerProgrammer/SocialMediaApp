@@ -1,0 +1,6 @@
+# Ignore Java build files
+*.class
+target/
+
+# macOS system file
+.DS_Store
