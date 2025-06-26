@@ -1,5 +1,8 @@
 package app;
 
+import java.sql.SQLException;
+
+import app.dao.UserDaoImpl;
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
 
@@ -22,12 +25,30 @@ public class SignUpPage implements Handler {
     public void handle(Context context) throws Exception {
         String username = context.formParam("textUsername");
         String email = context.formParam("textEmail");
-        String phoneNumber = context.formParam("textPoneNumber");
+        String phoneNumber = context.formParam("textPhoneNumber");
         String fullname = context.formParam("textFullName");
         String password = context.formParam("textPassword");
         
+        UserDaoImpl userdao = new UserDaoImpl();
+        boolean error = false;
+        if(isValid(username) && isValidEmail(email) && isValidPhoneNumber(phoneNumber) && isValid(fullname) && isValid(password)) {
+            
+            try {
+                userdao.createUser(username, password, phoneNumber, email, fullname);
+            } catch (SQLException e) {
+                error = true;
+            }
+            System.out.println("Sign up successful");
+        } else {
+            System.out.println("Not successfully");
+            System.out.println("Username: " + username);
+            System.out.println("Password: " + password);
+            System.out.println("Phone: " + phoneNumber);
+            System.out.println("Email: " + email);
+            System.out.println("Full Name: " + fullname);
+        }
         
-        
+
         // // Create a simple HTML webpage in a String
         String html = "<html>";
 
@@ -66,10 +87,17 @@ public class SignUpPage implements Handler {
                     <form method="post" action="/SignUpPage.html">
                         <img src = "cat.png" alt = "person" class = "logo-icon" />
                         <p>Sign up to see photos and videos from your friends.</p><br>
-                        <input type = "text" name = "textUsername" placeholder = "Username" required><br>
+                        <input type = "text" name = "textUsername" placeholder = "Username" required><br> """ + ((error == true) ?
+                            """ 
+                            <p id="ErrorUsername"> Username Already Taken! Try Again </p> 
+                            """ : "");
+                        
+
+                        html += """
                         <input type = "text" name = "textEmail" placeholder = "Email" required><br>
                         <input type = "text" name = "textPhoneNumber" placeholder = "Phone Number" required><br>
                         <input type = "text" name = "textFullName" placeholder = "Full Name" required><br>
+
                         <input type = "text" name = "textPassword" placeholder = "New Password" required><br>
                         <input type = "text" name = "textCPassword" placeholder = "Confirm Password" required><br>
                         <p class = "terms">
@@ -95,4 +123,16 @@ public class SignUpPage implements Handler {
         context.html(html);
     }
 
+    private boolean isValid(String text) {
+        return text != null && !text.isBlank();
+    }
+
+    private boolean isValidPhoneNumber(String text) {
+        return text != null && !text.isBlank() && text.matches("[0-9]+") /* &&  text.length() < 8 */;
+    }
+
+    private boolean isValidEmail(String text) {
+        return text != null && !text.isBlank() && text.matches("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
+    }
 }
+

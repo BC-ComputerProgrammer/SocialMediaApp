@@ -84,4 +84,11 @@ form input::placeholder {
     height: 90px;
     margin-right: 8px;
 }
+
+#ErrorUsername {
+    font-size: 14px;
+    color: red;
+}
+
+
   
