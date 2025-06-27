@@ -108,14 +108,9 @@ public class SignUpPage implements Handler {
         html = html + """
             <div class='topnav'>
                 <a href='/'>Homepage</a>
-                <a href='Sign Up.html'>Sign Up</a>
-		        <a href="equipment.html">Climate Equipment</a>
-                <a href='page2A.html'>Sub Task 2.A</a>
-                <a href='page2B.html'>Sub Task 2.B</a>
-                <a href='page2C.html'>Sub Task 2.C</a>
-                <a href='page3A.html'>Sub Task 3.A</a>
-                <a href='page3B.html'>Sub Task 3.B</a>
-                <a href='page3C.html'>Sub Task 3.C</a>
+		        <a href='SignUpPage.html'>Sign Up</a>
+                <a href="login">Log In</a>
+                <a href='Profile.html'>Profile</a>
             </div>
         """;
 

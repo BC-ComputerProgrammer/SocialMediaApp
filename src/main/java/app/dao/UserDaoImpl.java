@@ -69,5 +69,28 @@ public class UserDaoImpl implements UserDao {
         }
         
     }
+
+    public boolean checkPassword(String username, String password) throws SQLException {
+        String sql = "SELECT password FROM " + TABLE_NAME + " WHERE username = ?";
+        boolean passwordMatch = false;
+    
+        try (Connection conn = DataBase.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+             
+            stmt.setString(1, username);
+            
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    String storedPassword = rs.getString("password");
+                    if (password.equals(storedPassword)) {
+                        passwordMatch = true;
+                    }
+                }
+            }
+        }
+        
+        return passwordMatch;
+    }
+    
     
 }
