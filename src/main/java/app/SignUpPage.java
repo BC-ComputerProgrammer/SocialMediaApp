@@ -190,11 +190,5 @@ public class SignUpPage implements Handler {
         return text != null && !text.isBlank() && text.matches("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
     }
 
-    private void validateEmail(String text) {
-        if (text == null || text.isBlank() || 
-        !text.matches("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
-        throw new IllegalArgumentException("Invalid email address");
-        }
-    }
 }
 

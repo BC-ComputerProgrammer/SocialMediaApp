@@ -24,6 +24,7 @@ public class Profile implements Handler {
 
         // Add some CSS (external file)
         html = html + "<link rel='stylesheet' type='text/css' href='common.css' />";
+        html = html + "<link rel='stylesheet' type='text/css' href='Profile.css' />";
 
         // Add the body
         html = html + "<body>";
@@ -43,12 +44,15 @@ public class Profile implements Handler {
         html = html + """
             <div class='header'>
                 <h1>Welcome to Profile page</h1>
-                <h2>This is just for password checking purpose.</h2>
             </div>
         """;
 
         // Add Div for page Content
-        html = html + "<div class='content'>";
+        html = html + """
+        <div class='profile-section'>
+        <img src='default-profile-pic.jpg' alt='Profile Picture' class='profile-pic>
+        <div class ='username'>JohnDoe
+        """;
 
         // Add HTML for the page content
         html = html + """
