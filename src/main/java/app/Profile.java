@@ -19,6 +19,8 @@ public class Profile implements Handler {
 
     @Override
     public void handle(Context context) throws Exception {
+        String username = context.sessionAttribute("user");
+        if(username == null) context.redirect(LoginPage.URL);
         // Create a simple HTML webpage in a String
         String html = "<html>";
 
@@ -43,9 +45,9 @@ public class Profile implements Handler {
         // Add header content block
         html = html + """
             <div class='header'>
-                <h1>Welcome to Profile page</h1>
+                <h1>Welcome to Profile page, %s</h1>
             </div>
-        """;
+        """.formatted(username);
 
         // Add Div for page Content
         html = html + """

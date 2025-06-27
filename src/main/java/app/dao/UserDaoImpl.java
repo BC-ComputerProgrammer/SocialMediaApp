@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import app.model.User;
 
 public class UserDaoImpl implements UserDao {
@@ -90,6 +92,31 @@ public class UserDaoImpl implements UserDao {
         }
         
         return passwordMatch;
+    }
+
+    public User authenticate(String username, String password) throws SQLException {
+        //Fetch user from DB
+        String sql = "SELECT * FROM " + TABLE_NAME + " WHERE username = ?";
+        try (Connection conn = DataBase.getConnection();
+        PreparedStatement stmt = conn.prepareStatement(sql)) {
+            
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+
+            //Verify password if user exists
+            if (rs.next()) {
+                String storedHash = rs.getString("password_hash");
+                if(BCrypt.checkpw(password, storedHash)) {
+                    return new User(
+                        rs.getString("username"),
+                        rs.getString("password"), 
+                        rs.getString("email"), 
+                        rs.getString("phoneNumber"), 
+                        rs.getString("fullName"));
+                }
+            }
+        }
+        return null;
     }
     
     

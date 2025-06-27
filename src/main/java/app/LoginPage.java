@@ -28,18 +28,17 @@ public class LoginPage implements Handler {
         String errorMsg = ""; 
 
         if (username != null && password != null){
-            
             UserDaoImpl userdao = new UserDaoImpl();
             try {
-                boolean isMatch = userdao.checkPassword(username, password);
-
-                if(isMatch){
+                if(userdao.checkPassword(username, password)) {
+                    context.sessionAttribute("user", username);
                     context.redirect(Profile.URL);
                 }else{
                     errorMsg = "<p class = 'error-message'>Invalid username or password!</p>";
                 }
             }catch (SQLException e) {
                 System.err.println(e.getMessage());
+                errorMsg = "<p class='error-message'>Database error. Please try again.</p>";
             }
         }
         
