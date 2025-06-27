@@ -1,5 +1,6 @@
 # Ignore Java build files
 *.class
+*.db
 target/
 
 # macOS system file
