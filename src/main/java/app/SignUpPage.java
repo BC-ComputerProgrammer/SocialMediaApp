@@ -1,5 +1,8 @@
 package app;
 
+import java.sql.SQLException;
+
+import app.dao.UserDaoImpl;
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
 
@@ -17,17 +20,75 @@ public class SignUpPage implements Handler {
     // URL of this page relative to http://localhost:7002/
     public static final String URL = "/SignUpPage.html";
 
+    
     @Override
     @SuppressWarnings("empty-statement")
     public void handle(Context context) throws Exception {
-        String username = context.formParam("textUsername");
-        String email = context.formParam("textEmail");
-        String phoneNumber = context.formParam("textPoneNumber");
-        String fullname = context.formParam("textFullName");
-        String password = context.formParam("textPassword");
+        boolean usernameError = false; 
+        boolean emailError = false;
+        boolean phoneError = false;
+        boolean passwordError = false;
+        if("POST".equalsIgnoreCase(context.method())) {
+            String username = context.formParam("textUsername");
+            String email = context.formParam("textEmail");
+            String phoneNumber = context.formParam("textPhoneNumber");
+            String fullname = context.formParam("textFullName");
+            String password = context.formParam("textPassword");
+            String cPassword = context.formParam("textCPassword");
+            
+            
+            boolean isValid = true;
+            usernameError = false; 
+            emailError = false;
+
+            if(password == null || cPassword == null || !password.equals(cPassword)) {
+                isValid = false;
+                passwordError = true;
+            }
+            if(!isValid(username)) {
+                isValid = false;
+            }
+
+            if(!isValidEmail(email)) {
+                isValid = false;
+                emailError = true;
+            }
+
+            if(!isValidPhoneNumber(phoneNumber)){
+                isValid = false;
+                phoneError = true;
+            }
+
+            if(!isValid(fullname)) {
+                isValid = false;
+            }
+
+            if(!isValid(password)) {
+                isValid = false;
+            }
+
+            if(isValid) {
+               UserDaoImpl userdao = new UserDaoImpl(); 
+                try {
+                    userdao.createUser(username, password, phoneNumber, email, fullname);
+                } catch (SQLException e) {
+                    usernameError = true;
+
+                }
+                System.out.println("Sign up successful");
+            } else {
+                System.out.println("Not successfully");
+                System.out.println("Username: " + username);
+                System.out.println("Password: " + password);
+                System.out.println("Phone: " + phoneNumber);
+                System.out.println("Email: " + email);
+                System.out.println("Full Name: " + fullname);
+            }
+
+        }
+
         
-        
-        
+
         // // Create a simple HTML webpage in a String
         String html = "<html>";
 
@@ -47,14 +108,9 @@ public class SignUpPage implements Handler {
         html = html + """
             <div class='topnav'>
                 <a href='/'>Homepage</a>
-                <a href='Sign Up.html'>Sign Up</a>
-		        <a href="equipment.html">Climate Equipment</a>
-                <a href='page2A.html'>Sub Task 2.A</a>
-                <a href='page2B.html'>Sub Task 2.B</a>
-                <a href='page2C.html'>Sub Task 2.C</a>
-                <a href='page3A.html'>Sub Task 3.A</a>
-                <a href='page3B.html'>Sub Task 3.B</a>
-                <a href='page3C.html'>Sub Task 3.C</a>
+		        <a href='SignUpPage.html'>Sign Up</a>
+                <a href="login">Log In</a>
+                <a href='Profile.html'>Profile</a>
             </div>
         """;
 
@@ -66,12 +122,39 @@ public class SignUpPage implements Handler {
                     <form method="post" action="/SignUpPage.html">
                         <img src = "cat.png" alt = "person" class = "logo-icon" />
                         <p>Sign up to see photos and videos from your friends.</p><br>
-                        <input type = "text" name = "textUsername" placeholder = "Username" required><br>
+                        <input type = "text" name = "textUsername" placeholder = "Username" required><br> """ + ((usernameError == true) ?
+                            """ 
+                            <p id="ErrorUsername"> Username Already Taken! Try Again </p> 
+                            """ : "");
+                        
+
+                        html += """
                         <input type = "text" name = "textEmail" placeholder = "Email" required><br>
-                        <input type = "text" name = "textPhoneNumber" placeholder = "Phone Number" required><br>
-                        <input type = "text" name = "textFullName" placeholder = "Full Name" required><br>
-                        <input type = "text" name = "textPassword" placeholder = "New Password" required><br>
-                        <input type = "text" name = "textCPassword" placeholder = "Confirm Password" required><br>
+                        """ + ((emailError) ? """
+                                <p id="ErrorUsername"> Email is not valid! Try Again </p> 
+                                """ : "");
+
+                        html += """
+                                <input type = "text" name = "textPhoneNumber" placeholder = "Phone Number" required><br>
+                                """ + ((phoneError) ? """
+                                <p id="ErrorUsername"> Phone Number is not valid! Try Again </p> 
+                                """ : "");
+                        
+                        html += """
+                                <input type = "text" name = "textFullName" placeholder = "Full Name" required><br>
+                                """;
+                        
+                        html += """
+                                <input type = "text" name = "textPassword" placeholder = "New Password" required><br>
+                                """;
+                        
+                        html += """
+                                <input type = "text" name = "textCPassword" placeholder = "Confirm Password" required><br>
+                                """ + ((passwordError) ? """
+                                <p id="ErrorUsername"> Passwords is not the same! Try Again </p> 
+                                """ : "");
+                        
+                        html += """
                         <p class = "terms">
                             People who use our service may have uploaded your contact information to Instagram.<br>
                             By signing up, you agree to our Terms, Privacy Policy and Cookies Policy.
@@ -95,4 +178,17 @@ public class SignUpPage implements Handler {
         context.html(html);
     }
 
+    private boolean isValid(String text) {
+        return text != null && !text.isBlank();
+    }
+
+    private boolean isValidPhoneNumber(String text) {
+        return text != null && !text.isBlank() && text.matches("[0-9]+") /* &&  text.length() < 8 */;
+    }
+
+    private boolean isValidEmail(String text) {
+        return text != null && !text.isBlank() && text.matches("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
+    }
+
 }
+

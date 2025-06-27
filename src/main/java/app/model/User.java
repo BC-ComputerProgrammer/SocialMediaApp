@@ -15,7 +15,4 @@ public class User {
         this.name = name;
     }
 
-    String to_String() {
-        return "[ Username: " + username + " Password: " + password + " Email: " + email + " Phone Number: " + phoneNum + " Name: " + name + " ]";
-    }
 }

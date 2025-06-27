@@ -2,11 +2,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 40px;
+    padding: 100px
 }
 
-.signup-box {
-    background-color: #121212;
+.login-box {
+    background-color: #373636;
     padding: 40px;
     width: 350px;
     border: 1px solid #333;
@@ -14,20 +15,20 @@
     border-radius: 10px;
 }
 
-.signup-box p {
+.login-box p {
     font-size: 14px;
-    color: #ccc;
+    color: rgb(254, 251, 251);
     margin: 10px 0;
 }
 
-.terms {
+.question {
     font-size: 11px;
-    color: #aaa;
+    color: #8a8a8a;
     margin: 15px 0;
 }
   
 
-.signup-btn {
+.login-btn {
     width: 100%;
     background-color: #0095f6;
     border: none;
@@ -39,7 +40,7 @@
     cursor: pointer;
 }
 
-.signup-btn:hover{
+.login-btn:hover{
     background-color: rgb(93, 93, 235);
 }
   
@@ -53,30 +54,18 @@
     text-decoration: none;
 }
 
-/*
-body {
-    background-color: #000;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: #fff;
-}
-*/
-
 form input {
     width: 100%;
     padding: 10px;
     margin: 8px 0;
     border: 1px solid #555;
     border-radius: 5px;
-    background-color: #222;
-    color: #fff;
+    background-color: #f8f7f7;
+    color: black;
 }
 
 form input::placeholder {
-    color: #aaa;
+    color: grey;
 }
 
 .logo-icon {
@@ -85,10 +74,8 @@ form input::placeholder {
     margin-right: 8px;
 }
 
-#ErrorUsername {
-    font-size: 14px;
-    color: red;
+.error-message {
+    color: red !important;
+    text-align: center;
 }
-
-
   
