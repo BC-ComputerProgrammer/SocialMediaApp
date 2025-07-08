@@ -2,6 +2,7 @@ package app;
 
 import java.sql.SQLException;
 
+import app.controllers.LoginPage;
 import app.controllers.SignUpPage;
 import app.repositories.UserDaoImpl;
 import io.javalin.Javalin;
