@@ -6,31 +6,45 @@ import app.repositories.UserDaoImpl;
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
 
-/**
- * Example Index HTML class using Javalin
- * <p>
- * Generate a static HTML page using Javalin
- * by writing the raw HTML into a Java String object
- *
- * @author Timothy Wiley, 2023. email: timothy.wiley@rmit.edu.au
- * @author Santha Sumanasekara, 2021. email: santha.sumanasekara@rmit.edu.au
- */
+
 public class SignUpPage implements Handler {
     public static final String URL = "/api/signup";
 
     @Override
     public void handle(Context context) throws Exception {
-        SignUpRequest request = context.bodyAsClass((SignUpRequest.class));
+        try {
+            context.contentType("application/json");
+            SignUpRequest request = context.bodyAsClass((SignUpRequest.class));
         
+
+            // if(!isValid(request.username)) {
+
+            // }
+
+            // if(!isValidEmail(request.email)) {
+
+            // }
+
+            // if(!isValidPhoneNumber(request.phoneNumber)){
+
+            // }
+            
+            
            
-            if(!isValid(request.username) || isValidEmail(request.email) ||
-            !isValidPhoneNumber(request.phoneNumber) || !isValid(request.fullName) 
-            || !isValid(request.password) || !isValid(request.confirmPassword) || 
+            if(!isValid(request.username) || !isValidEmail(request.email) ||
+            !isValidPhoneNumber(request.phoneNumber) || !isValid(request.password) || !isValid(request.confirmPassword) || 
             !request.password.equals(request.confirmPassword)) {
                 
             context.status(400).json(new ErrorResponse("Invalid input data"));
             return;
             }
+
+            // if (request.username == null || request.email == null || 
+            // request.password == null || !request.password.equals(request.confirmPassword)) {
+            // context.status(400).json(Map.of("error", "Missing required fields"));
+            // return;
+            // }
+
 
             try {
                 UserDaoImpl userdao = new UserDaoImpl(); 
@@ -39,11 +53,17 @@ public class SignUpPage implements Handler {
             } catch (SQLException e) {
                 context.status(409).json(new ErrorResponse("Username already exists"));
             }
+        } catch (Exception e) {
+            context.status(400)
+                .contentType("application/json")
+                .json(new ErrorResponse("Invalid server error: " + e.getMessage()));
+           
+        }
                 
             }
 
     private boolean isValid(String text) {
-        return text != null && !text.isBlank();
+        return text != null && !text.isBlank() && text.length() >= 4 && text.length() <= 20;
     }
 
     private boolean isValidPhoneNumber(String text) {
