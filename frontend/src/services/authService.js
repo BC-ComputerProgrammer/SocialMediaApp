@@ -1,6 +1,6 @@
 export const signUp = async (userData) => {
     try {
-    const response = await fetch('http://localhost:7000/api/signup', {
+    const response = await fetch('http://localhost:7001/api/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -15,6 +15,7 @@ export const signUp = async (userData) => {
      
       throw new Error(responseData.error || responseData.message || 'Registration failed');
     }
+    return responseData; 
 
      } catch (error) {
    
@@ -22,31 +23,34 @@ export const signUp = async (userData) => {
         throw new Error('Invalid server response');
       }
       throw error; 
-
-      return responseData;
   }
 };
 
 export const login = async (userData) => {
-    try {
-        const response = await fetch('http://localhost:7000/api/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(userData),
-        });
+  const response = await fetch('http://localhost:7001/api/login', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+  });
 
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error || 'Login failed');
-        }
+  let responseData = null;
 
-        return await response.json(); 
-    } catch (error) {
-        throw new Error(error.message || 'Network request failed');
-    }
+  try {
+      responseData = await response.json();
+  } catch (parseError) {
+      responseData = { error: 'Login failed (invalid server response)' };
+  }
 
-    return responseData;
-    
+  if (!response.ok) {
+
+      console.log("BACKEND SENT:", responseData);
+
+      const error = new Error(); 
+      error.response = { data: responseData };
+      throw error;
+  }
+
+  return responseData;
 };

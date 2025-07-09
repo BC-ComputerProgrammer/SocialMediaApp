@@ -41,23 +41,22 @@ const LoginPage = () => {
             localStorage.setItem("username", formData.username);
             navigate('/Profile');
         }catch(error){
-            const errorMessage= error?.response?.data?.message || error.message || 'Login failed';
 
-            if(errorMessage.includes('Invalid username')){
-                setErrors((prev) => ({
-                    ...prev,
-                    usernameError: 'Invalid username'
-                }));
-            }else if(errorMessage.includes('Invalid password')){
-                setErrors((prev) => ({
-                    ...prev,
-                    passwordError: 'Invalid password'
-                }));
-            }else{
-                setErrors((prev) => ({
-                    ...prev,
-                    general: errorMessage
-                }));
+            console.log("RAW ERROR:", error);
+            console.log("Response data:", error?.response?.data);
+
+            const errorMessage= error?.response?.data?.error || error.message || 'Login failed';
+
+            if (errorMessage === 'Username does not exist') {
+                setErrors((prev) => ({ ...prev, usernameError: errorMessage }));
+            } else if (errorMessage === 'Invalid username') {
+                setErrors((prev) => ({ ...prev, usernameError: errorMessage }));
+            } else if (errorMessage === 'Invalid password') {
+                setErrors((prev) => ({ ...prev, passwordError: errorMessage }));
+            } else if (errorMessage === 'Incorrect password') {
+                setErrors((prev) => ({ ...prev, passwordError: errorMessage }));
+            } else {
+                setErrors((prev) => ({ ...prev, general: errorMessage }));
             }
         }
     };
