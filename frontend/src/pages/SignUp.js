@@ -17,11 +17,17 @@ const SignUpPage = () => {
 
     //state for errors
     const [errors, setErrors] = useState({
-        usernameError: false,
-        emailError: false,
-        phoneError: false,
-        passwordError: false
+        username: '',
+        email: '',
+        phoneNumber: '',
+        password: '',
+        confirmPassword: '',
+        general: ''
     });
+
+    const [successMessage, setSuccessMessage] = useState('');
+
+
 
     const  handleChange = (e) => {
         const { name, value } = e.target;
@@ -36,18 +42,24 @@ const SignUpPage = () => {
         e.preventDefault();
 
         try {
-          await signUp(formData);
-          navigate('/login');
+          const result = await signUp(formData);
+          setSuccessMessage('Account created successfully! Redirecting...');
+          
+          setTimeout(() => {
+            navigate('/login');
+          }, 2000);
         } catch (error) {
-          const errorMessage = error?.response?.data?.message || error?.message || "Signup failed";
-
-          if(error.message.includes('Username already exists')) {
-            setErrors(prev => ({ ...prev, username: error.message }));
-          } else if (error.message.includes('Invalid input data')) {
-            setErrors(prev => ({ ...prev, general: 'Please check your inputs'}));
-          } else {
-            setErrors(prev => ({ ...prev, general: error.message }));
-          }
+          const errorMessage = error.message;
+    
+          setErrors({
+            username: /username/i.test(errorMessage) ? errorMessage : '',
+            email: /email/i.test(errorMessage) ? errorMessage : '',
+            phoneNumber: /phone/i.test(errorMessage) ? errorMessage : '',
+            password: /password/i.test(errorMessage) ? errorMessage : '',
+            confirmPassword: /match/i.test(errorMessage) ? errorMessage : '',
+            general: !/username|email|phone|password|match/i.test(errorMessage) ? errorMessage : ''
+        });
+          
         }
     };
 
@@ -73,6 +85,9 @@ const SignUpPage = () => {
             {errors.general && (
               <p className="error-message">{errors.general}</p>
             )}
+            {successMessage && (
+              <p className="success-message">{successMessage}</p>
+            )}
             <input
               type="text"
               name="username"
@@ -81,6 +96,9 @@ const SignUpPage = () => {
               onChange={handleChange}
               required
             />
+            {errors.username && (
+              <p className="error-message">{errors.username}</p>
+            )}
             
             
             <input
@@ -91,7 +109,7 @@ const SignUpPage = () => {
               onChange={handleChange}
               required
             />
-            {errors.emailError && (
+            {errors.email && (
               <p className="error-message">Email is not valid! Try Again</p>
             )}
             
@@ -104,11 +122,8 @@ const SignUpPage = () => {
               onChange={handleChange}
               required
             />
-            {errors.username && (
-              <p className="error-message">{errors.username}</p>
-            )}
 
-            {errors.phoneError && (
+            {errors.phoneNumber && (
               <p className="error-message">Phone Number is not valid! Try Again</p>
             )}
             
@@ -129,7 +144,7 @@ const SignUpPage = () => {
               onChange={handleChange}
               required
             />
-            {errors.passwordError && (
+            {errors.password && (
               <p className="error-message">Passwords do not match! Try Again</p>
             )}
             
