@@ -56,8 +56,9 @@ const SignUpPage = () => {
             email: /email/i.test(errorMessage) ? errorMessage : '',
             phoneNumber: /phone/i.test(errorMessage) ? errorMessage : '',
             password: /password/i.test(errorMessage) ? errorMessage : '',
-            confirmPassword: /match/i.test(errorMessage) ? errorMessage : '',
-            general: !/username|email|phone|password|match/i.test(errorMessage) ? errorMessage : ''
+            confirmPassword: /confirm/i.test(errorMessage) ? errorMessage : '',
+            samePassword: /match/i.test(errorMessage) ? errorMessage : '',
+            general: !/username|email|phone|password|confirm|match/i.test(errorMessage) ? errorMessage : ''
         });
           
         }
@@ -136,6 +137,11 @@ const SignUpPage = () => {
               onChange={handleChange}
               required
             />
+
+            {errors.password && (
+              <p className="error-message">Invalid Password! Try Again</p>
+            )}
+
             <input
               type="password"
               name="confirmPassword"
@@ -144,7 +150,12 @@ const SignUpPage = () => {
               onChange={handleChange}
               required
             />
-            {errors.password && (
+
+            {errors.confirmPassword && (
+              <p className="error-message">Invalid Confirm Password! Try Again</p>
+            )}
+
+            {errors.samePassword && (
               <p className="error-message">Passwords do not match! Try Again</p>
             )}
             

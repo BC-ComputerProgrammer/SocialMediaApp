@@ -12,7 +12,6 @@ export const signUp = async (userData) => {
     const responseData = await response.json(); 
 
     if (!response.ok) {
-     
       throw new Error(responseData.error || responseData.message || 'Registration failed');
     }
     return responseData; 

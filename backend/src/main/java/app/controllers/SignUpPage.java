@@ -21,23 +21,38 @@ public class SignUpPage implements Handler {
 
             // }
 
-            // if(!isValidEmail(request.email)) {
-
-            // }
-
-            // if(!isValidPhoneNumber(request.phoneNumber)){
-
-            // }
-            
-            
-           
-            if(!isValid(request.username) || !isValidEmail(request.email) ||
-            !isValidPhoneNumber(request.phoneNumber) || !isValid(request.password) || !isValid(request.confirmPassword) || 
-            !request.password.equals(request.confirmPassword)) {
-                
-            context.status(400).json(new ErrorResponse("Invalid input data"));
-            return;
+            if(!isValidEmail(request.email)) {
+                context.status(400).json(new ErrorResponse("email"));
+                return;
             }
+
+            if(!isValidPhoneNumber(request.phoneNumber)){
+                context.status(400).json(new ErrorResponse("phone"));
+                return;
+            }
+            
+            if(!isValid(request.password)) {
+                context.status(400).json(new ErrorResponse("password"));
+                return;
+            }
+
+            if(!isValid(request.confirmPassword)) {
+                context.status(400).json(new ErrorResponse("confirm"));
+                return;
+            }
+            
+            if(!request.password.equals(request.confirmPassword)) {
+                context.status(400).json(new ErrorResponse("match"));
+                return;
+            }
+           
+            // if(!isValid(request.username) || !isValidEmail(request.email) ||
+            // !isValidPhoneNumber(request.phoneNumber) || !isValid(request.password) || !isValid(request.confirmPassword) || 
+            // !request.password.equals(request.confirmPassword)) {
+                
+            // context.status(400).json(new ErrorResponse("Invalid input data"));
+            // return;
+            // }
 
             // if (request.username == null || request.email == null || 
             // request.password == null || !request.password.equals(request.confirmPassword)) {
@@ -48,7 +63,7 @@ public class SignUpPage implements Handler {
 
             try {
                 UserDaoImpl userdao = new UserDaoImpl(); 
-                userdao.createUser(request.username, request.password, request.phoneNumber, request.email, request.fullName);
+                userdao.createUser(request.username, request.password, request.phoneNumber, request.email);
                 context.status(201).json(new SuccessResponse("User created successfully"));
             } catch (SQLException e) {
                 context.status(409).json(new ErrorResponse("Username already exists"));

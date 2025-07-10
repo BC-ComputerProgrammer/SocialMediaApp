@@ -6,6 +6,6 @@ import app.models.User;
 
 public interface  UserDao {
     void setup() throws SQLException;
-    User createUser(String username, String password, String phoneNum, String email, String name) throws SQLException;
+    User createUser(String username, String password, String phoneNum, String email) throws SQLException;
     boolean userExists(String username) throws SQLException;
 }
