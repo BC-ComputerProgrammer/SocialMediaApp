@@ -1,12 +1,23 @@
+
+.signup-page {
+    min-height: 100vh;
+    background-color: #1c1c1c;
+    /* color: white; */
+}
+
+
 .main-content{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 40px;
+    padding: 100px
 }
 
+
+
 .signup-box {
-    background-color: #121212;
+    background-color: #373636;
     padding: 40px;
     width: 350px;
     border: 1px solid #333;
@@ -16,13 +27,13 @@
 
 .signup-box p {
     font-size: 14px;
-    color: #ccc;
+    color: rgb(254, 251, 251);
     margin: 10px 0;
 }
 
 .terms {
     font-size: 11px;
-    color: #aaa;
+    color: #8a8a8a;
     margin: 15px 0;
 }
   
@@ -53,17 +64,6 @@
     text-decoration: none;
 }
 
-/*
-body {
-    background-color: #000;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: #fff;
-}
-*/
 
 form input {
     width: 100%;
@@ -71,23 +71,33 @@ form input {
     margin: 8px 0;
     border: 1px solid #555;
     border-radius: 5px;
-    background-color: #222;
-    color: #fff;
+    background-color: #f8f7f7;
+    color: black;
 }
 
 form input::placeholder {
-    color: #aaa;
+    color: grey;
 }
 
 .logo-icon {
     width: 90px;
     height: 90px;
     margin-right: 8px;
+    margin-bottom: 10px;
 }
 
-#ErrorUsername {
-    font-size: 14px;
-    color: red;
+.signup-box .error-message {
+    text-align: center;
+    color: #ff0a0e;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.signup-box .success-message {
+    text-align: center;
+    color: greenyellow;
+    font-size: 13px;
+    margin-bottom: 10px;
 }
 
 

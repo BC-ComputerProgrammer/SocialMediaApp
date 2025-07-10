@@ -23,7 +23,7 @@ public class UserDaoImpl implements UserDao {
                     "password CHAR(50) NOT NULL, " +
                     "email VARCHAR(50) NOT NULL, " +
                     "phoneNum VARCHAR(15) NOT NULL, " +
-                    "name VARCHAR(50) NOT NULL, " +
+                    "name VARCHAR(50), " +
                     "PRIMARY KEY (username))";
                     System.out.println("Table created/verified: " + TABLE_NAME);
                     stmt.executeUpdate(sql);
@@ -35,12 +35,12 @@ public class UserDaoImpl implements UserDao {
 
 
     @Override
-    public User createUser(String username, String password, String phoneNum, String email, String name) throws SQLException {
+    public User createUser(String username, String password, String phoneNum, String email) throws SQLException {
         if(userExists(username)) {
             throw new SQLException("Username already exists, Please try again");
         } 
         
-        String sql = "INSERT INTO " + TABLE_NAME + " (username, password, phoneNum, email, name) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO " + TABLE_NAME + " (username, password, phoneNum, email) VALUES (?,?,?,?)";
 
         try(Connection conn = DataBase.getConnection(); 
             PreparedStatement stmt = conn.prepareStatement(sql);) {
@@ -48,10 +48,9 @@ public class UserDaoImpl implements UserDao {
                 stmt.setString(2, password);
                 stmt.setString(3, phoneNum);
                 stmt.setString(4, email);
-                stmt.setString(5, name);
 
                 stmt.executeUpdate();
-                return new User(username, password, phoneNum, email, name);
+                return new User(username, password, phoneNum, email);
             } catch (SQLException e) {
                 System.err.println("Error Inserting user, Please try again");
                 throw e;
@@ -111,8 +110,7 @@ public class UserDaoImpl implements UserDao {
                         rs.getString("username"),
                         rs.getString("password"), 
                         rs.getString("email"), 
-                        rs.getString("phoneNumber"), 
-                        rs.getString("fullName"));
+                        rs.getString("phoneNumber"));
                 }
             }
         }

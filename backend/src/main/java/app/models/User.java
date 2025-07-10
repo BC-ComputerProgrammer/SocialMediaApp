@@ -1,18 +1,21 @@
 package app.models;
 
 public class User {
-    private String username;
-    private String password;
-    private String email;
-    private String phoneNum;
-    private String name;
+    @SuppressWarnings("unused")
+    private final String username;
+    @SuppressWarnings("unused")
+    private final String password;
+    @SuppressWarnings("unused")
+    private final String email;
+    @SuppressWarnings("unused")
+    private final String phoneNum;
+    
 
-    public User(String username, String password, String email, String phoneNum, String name) {
+    public User(String username, String password, String email, String phoneNum) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.phoneNum = phoneNum;
-        this.name = name;
     }
 
 }
