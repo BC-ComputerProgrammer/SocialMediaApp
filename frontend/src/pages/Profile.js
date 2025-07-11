@@ -4,6 +4,8 @@ import "../resources/css/common.css";
 import "../resources/css/Profile.css";
 import {Link} from "react-router-dom";
 import profilePic from '../resources/images/default-profile-pic.jpg';
+import Sidebar from '../components/Sidebar';
+
 
 
 const ProfilePage = () => {
@@ -46,14 +48,8 @@ const ProfilePage = () => {
 
     return(
         <div className="profile-container">
-            <div className="topnav">
-                <Link to="/">Home</Link>
-                <Link to="/signup">Sign Up</Link>
-                <Link to="/login">Log In</Link>
-                <Link to="/profile">Profile</Link>
-                <button onClick={handleLogout} className="logout-button">Log Out</button>
-            </div>
-
+            {/* Profile Sidebar */}
+            <Sidebar />
 
             {/* Profile Header */}
             <header className="profile-header">

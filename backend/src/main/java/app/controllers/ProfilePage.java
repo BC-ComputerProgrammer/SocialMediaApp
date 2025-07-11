@@ -11,6 +11,7 @@ public class ProfilePage implements Handler {
 
     @Override
     public void handle(Context ctx) throws Exception {
+
         String username = ctx.sessionAttribute("user");
         if(username == null){
             ctx.redirect(LoginPage.URL);
@@ -19,8 +20,7 @@ public class ProfilePage implements Handler {
 
         ctx.json(Map.of(
         "username", username,
-        "bio", "Hello! I love React.",
-        "location", "Melbourne"
+        "bio", "Hello! I love reading, skiing and coding. My dream is to win a lottery and travel around the world!"
         ));
         
     }
