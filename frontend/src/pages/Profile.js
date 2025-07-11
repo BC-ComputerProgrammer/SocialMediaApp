@@ -1,30 +1,56 @@
-import React from "react";
+import React, { useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import "../resources/css/common.css";
 import "../resources/css/Profile.css";
+import {Link} from "react-router-dom";
+import profilePic from '../resources/images/default-profile-pic.jpg';
+
 
 const ProfilePage = () => {
     const navigate = useNavigate();
+    const [profileData, setProfileData] = useState(null);
 
     const username = localStorage.getItem("username") || "Guest";
+
+
+    useEffect(() => {
+        if(!localStorage.getItem("username")){
+            navigate("/login");
+            return;
+        }
+
+        fetch("http://localhost:7001/api/profile", {
+            credentials: "include"
+        })
+        .then((res) => {
+            if(res.redirected || res.status === 401){
+                navigate("/login");
+                return;
+            }
+            return res.json();
+        })
+        .then((data) => {
+            console.log("Received profile data:", data); 
+            if(data) setProfileData(data);
+        })
+        .catch((err) => console.error("Failed to fetch profile:", err));
+
+    }, [navigate]);
 
     const handleLogout = () => {
         localStorage.removeItem("username");
         navigate("/login");
     }
 
-    if(!localStorage.getItem("username")) {
-        navigate("/login");
-        return null;
-    }
+    if(!profileData) return <p>Loading...</p>
 
     return(
         <div className="profile-container">
             <div className="topnav">
-                <a href="/">Home</a>
-                <a href="/signup">Sign Up</a>
-                <a href="/login">Log In</a>
-                <a href="/profile">Profile</a>
+                <Link to="/">Home</Link>
+                <Link to="/signup">Sign Up</Link>
+                <Link to="/login">Log In</Link>
+                <Link to="/profile">Profile</Link>
                 <button onClick={handleLogout} className="logout-button">Log Out</button>
             </div>
 
@@ -32,18 +58,19 @@ const ProfilePage = () => {
             {/* Profile Header */}
             <header className="profile-header">
                 <img
-                    src='default-profile-pic.jpg'
+                    src={profilePic}
                     alt='Profile'
                     className='profile-pic'
+                    onError={(e) => e.target.style.display = 'none'}
                 />
-                <h1>{username}'s Profile</h1>
+                <h1>{profileData.username}'s Profile</h1>
             </header>
 
             {/* Profile Details */}
             <section className='profile-details'>
                 <div className="detail-item">
                     <h3>Bio</h3>
-                    <p> {/* users bio */} </p>
+                    <p> {profileData.bio} </p>
                 </div>
 
 

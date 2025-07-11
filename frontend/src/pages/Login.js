@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import '../resources/css/LoginPage.css';
 import { login } from '../services/authService'; 
 import catImage from '../resources/images/cat.png';
+import { Link } from 'react-router-dom';
+
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -39,7 +41,7 @@ const LoginPage = () => {
         try{
             await login(formData);
             localStorage.setItem("username", formData.username);
-            navigate('/Profile');
+            navigate('/profile');
         }catch(error){
 
             console.log("RAW ERROR:", error);
@@ -64,10 +66,10 @@ const LoginPage = () => {
     return(
         <div className="login-page">
             <div className="topnav">
-                <a href="/">Homepage</a>
-                <a href="/signup">Sign Up</a>
-                <a href="/login">Log In</a>
-                <a href="/profile">Profile</a>
+                <Link to="/">Home</Link>
+                <Link to="/signup">Sign Up</Link>
+                <Link to="/login">Log In</Link>
+                <Link to="/profile">Profile</Link>
             </div>
 
             <div className="main-content">

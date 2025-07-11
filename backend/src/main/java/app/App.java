@@ -3,6 +3,7 @@ package app;
 import java.sql.SQLException;
 
 import app.controllers.LoginPage;
+import app.controllers.ProfilePage;
 import app.controllers.SignUpPage;
 import app.repositories.UserDaoImpl;
 import io.javalin.Javalin;
@@ -52,18 +53,15 @@ public class App {
         app.get(SignUpPage.URL, new SignUpPage());
 
         app.get(LoginPage.URL, new LoginPage());
-        // app.get(Profile.URL, new Profile());
+        app.get(ProfilePage.URL, new ProfilePage());
 
         // Add / uncomment POST commands for any pages that need web form POSTS
         // app.post(PageIndex.URL, new PageIndex());
         app.post(SignUpPage.URL, new SignUpPage());
 
         app.post(LoginPage.URL, new LoginPage());
-        // app.post(Profile.URL, new Profile());
+        app.post(ProfilePage.URL, new ProfilePage());
 
-        // app.post(PageST2B.URL, new PageST2B());
-        // app.post(PageST3A.URL, new PageST3A());
-        // app.post(PageST3B.URL, new PageST3B());
     }
 
 }
